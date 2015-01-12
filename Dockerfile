@@ -64,7 +64,7 @@ RUN rm -rf /opt/geoserver_data && rm -rf /opt/tomcat7/webapps/geoserver/data && 
 # import selected AURIN 6/2 data 
 ADD dataimportcfg.json /aurin62-code-resources/dataimportcfg.json
 ADD dataimportselection.txt /aurin62-code-resources/dataimportselection.txt
-RUN /etc/init.d/postgresql start && /usr/bin/python /aurin62-code-resources/selectedbatchimport.py /aurin62-data /aurin-code-resources/dataimportcfg.json /aurin-code-resources/dataimportselection.txt 
+RUN /etc/init.d/postgresql start && /usr/bin/python /aurin62-code-resources/selectedbatchimport.py /aurin62-data /aurin62-code-resources/dataimportcfg.json /aurin62-code-resources/dataimportselection.txt 
 
 
 
