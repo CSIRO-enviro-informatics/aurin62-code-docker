@@ -1,0 +1,11 @@
+Pre-requisite:
+* csiro_env/geoserver - clone and build from  https://github.com/CSIRO-enviro-informatics/docker-geoserver/
+
+
+Run:
+$ docker build --no-cache -t aurin .
+$ docker run -p 2223:22 -p 8444:443 aurin 
+
+
+In a browser try:
+ https://localhost:8444/geoserver
