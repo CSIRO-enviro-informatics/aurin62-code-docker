@@ -8,8 +8,10 @@ ADD known_hosts /root/.ssh/known_hosts
 
 RUN chmod 700 /root/.ssh/*
 #Clone this repository for internals 
-RUN git clone ssh://git@stash.csiro.au:7999/a62/aurin62.git
-RUN cd aurin62 && git pull && git checkout tags/it.csiro.au-20150112
+#RUN git clone ssh://git@stash.csiro.au:7999/a62/aurin62.git
+RUN git clone ssh://git@stash.csiro.au:7999/a62/aurin62-data.git
+RUN git clone ssh://git@stash.csiro.au:7999/a62/aurin62-code-resources.git
+RUN cd aurin62-code-resources && git checkout it.csiro.au && git pull
 
 #Install apache with ssl (from https://registry.hub.docker.com/u/eboraas/apache/dockerfile) and proxy_ajp
 RUN apt-get update && apt-get -y install apache2 apache2-utils && apt-get clean 
@@ -29,11 +31,11 @@ RUN a2enmod socache_shmcb.load
 RUN a2enmod headers 
 
 # configure proxy to tomcat 
-RUN /bin/ln -sf /aurin62/code/build/resources/docker/25-siss-ssl.conf /etc/apache2/sites-available/25-siss-ssl.conf 
-RUN /bin/ln -sf /aurin62/code/build/resources/docker/25-siss-ssl.conf /etc/apache2/sites-enabled/25-siss-ssl.conf 
+RUN /bin/ln -sf /aurin62-code-resources/docker/25-siss-ssl.conf /etc/apache2/sites-available/25-siss-ssl.conf 
+RUN /bin/ln -sf /aurin62-code-resources/docker/25-siss-ssl.conf /etc/apache2/sites-enabled/25-siss-ssl.conf 
 
 # configure tomcat
-RUN /bin/ln -sf /aurin62/code/build/resources/docker/server.xml /opt/tomcat7/conf/server.xml
+RUN /bin/ln -sf /aurin62-code-resources/docker/server.xml /opt/tomcat7/conf/server.xml
 
 #Setup Python 
 RUN locale-gen en_AU.utf8
@@ -53,17 +55,17 @@ USER root
 # create wesc database structure
 USER postgres 
 RUN /etc/init.d/postgresql start &&\
-    psql -h localhost -d geoserver -U geoserver-admin -w -f /aurin62/code/build/resources/WESCDDL.sql && /etc/init.d/postgresql stop
+    psql -h localhost -d geoserver -U geoserver-admin -w -f /aurin62-code-resources/WESCDDL.sql && /etc/init.d/postgresql stop
 USER root 
 
 # configure geoserver 
-RUN rm -rf /opt/geoserver_data && rm -rf /opt/tomcat7/webapps/geoserver/data && /bin/ln -sf /aurin62/code/build/resources/docker/geoserver-data /opt/geoserver_data
+RUN rm -rf /opt/geoserver_data && rm -rf /opt/tomcat7/webapps/geoserver/data && /bin/ln -sf /aurin62-code-resources/docker/geoserver-data /opt/geoserver_data
  
 
 # import selected AURIN 6/2 data 
-ADD dataimportcfg.json /aurin62/code/build/resources/dataimportcfg.json
-ADD dataimportselection.txt /aurin62/code/build/resources/dataimportselection.txt
-RUN cd /aurin62/code/build/resources && /etc/init.d/postgresql start && /usr/bin/python /aurin62/code/build/resources/selectedbatchimport.py
+ADD dataimportcfg.json /aurin62-code-resources/dataimportcfg.json
+ADD dataimportselection.txt /aurin62-code-resources/dataimportselection.txt
+RUN /etc/init.d/postgresql start && /usr/bin/python /aurin62-code-resources/selectedbatchimport.py /aurin62-data /aurin62-code-resources/dataimportcfg.json /aurin62-code-resources/dataimportselection.txt 
 
 
 ENV GEOSERVER_DATA_DIR  /opt/geoserver_data
