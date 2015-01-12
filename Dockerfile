@@ -9,8 +9,7 @@ ADD known_hosts /root/.ssh/known_hosts
 RUN chmod 700 /root/.ssh/*
 #Clone this repository for internals 
 RUN git clone ssh://git@stash.csiro.au:7999/a62/aurin62.git
-cd /aurin62 && RUN git checkout --force it.csiro.au
-RUN git pull
+RUN cd aurin62 && git pull && git checkout tags/it.csiro.au-20150112
 
 #Install apache with ssl (from https://registry.hub.docker.com/u/eboraas/apache/dockerfile) and proxy_ajp
 RUN apt-get update && apt-get -y install apache2 apache2-utils && apt-get clean 
@@ -64,7 +63,7 @@ RUN rm -rf /opt/geoserver_data && rm -rf /opt/tomcat7/webapps/geoserver/data && 
 # import selected AURIN 6/2 data 
 ADD dataimportcfg.json /aurin62/code/build/resources/dataimportcfg.json
 ADD dataimportselection.txt /aurin62/code/build/resources/dataimportselection.txt
-RUN /etc/init.d/postgresql start && /usr/bin/python /aurin62/code/build/resources/selectedbatchimport.py
+RUN cd /aurin62/code/build/resources && /etc/init.d/postgresql start && /usr/bin/python /aurin62/code/build/resources/selectedbatchimport.py
 
 
 ENV GEOSERVER_DATA_DIR  /opt/geoserver_data
