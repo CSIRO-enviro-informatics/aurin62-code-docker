@@ -11,7 +11,7 @@ RUN chmod 700 /root/.ssh/*
 #RUN git clone ssh://git@stash.csiro.au:7999/a62/aurin62.git
 RUN git clone ssh://git@stash.csiro.au:7999/a62/aurin62-data.git
 RUN git clone ssh://git@stash.csiro.au:7999/a62/aurin62-code-resources.git
-RUN cd aurin62-code-resources && git checkout it.csiro.au && git pull
+RUN cd /aurin62-code-resources && git checkout it.csiro.au && git pull
 
 #Install apache with ssl (from https://registry.hub.docker.com/u/eboraas/apache/dockerfile) and proxy_ajp
 RUN apt-get update && apt-get -y install apache2 apache2-utils && apt-get clean 
