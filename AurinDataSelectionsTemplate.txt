@@ -11,3 +11,4 @@ yvwpoa	combinedmeterreadings-yvw-poa	8182
 yvwlocality	combinedmeterreadings-yvw-locality	8183
 sydneywater	combinedmeterreadings-sydneywater-lga	8190
 energex	combinedmeterreadings-energex-poa	8191
+jemena	combinedmeterreadings-jemena	8192
