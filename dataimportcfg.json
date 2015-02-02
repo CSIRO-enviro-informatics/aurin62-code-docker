@@ -95,6 +95,12 @@
         "name": "YVW individual site water consumption",
         "etlgenerate": "YVW/yvw-sample1-etl.py",
         "etlscript": "combinedmeterreadings-yvw-sample1.sql"
+    },
+    {
+        "id": "combinedmeterreadings-jemena",
+        "name": "Jemena electricity consumption",
+        "etlgenerate": "Jemena/JemenaDataProcessor.py",
+        "etlscript": "combinedmeterreadings-jemena-poa.sql"
     }
     ]
 }
