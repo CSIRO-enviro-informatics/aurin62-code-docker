@@ -39,7 +39,7 @@ RUN /bin/ln -sf /aurin62-code-resources/docker/server.xml /opt/tomcat7/conf/serv
 #Setup Python 
 RUN locale-gen en_AU.utf8
 RUN apt-get install -y python python-pip
-RUN pip install xlrd pint petl
+RUN pip install xlrd pint petl teamcity-messages
 
 
 #Set geoserver postgres password
