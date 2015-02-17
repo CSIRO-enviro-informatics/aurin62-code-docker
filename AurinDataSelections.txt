@@ -1,3 +1,1 @@
-esaa	combinedmeterreadings-esaa	8110
-energex	combinedmeterreadings-energex-poa	8191
-jemena	combinedmeterreadings-jemena	8192
+abselectricityconsnet	combinedmeterreadings-netmeters-abs	8131
