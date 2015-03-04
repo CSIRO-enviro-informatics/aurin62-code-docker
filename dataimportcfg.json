@@ -19,6 +19,12 @@
             "etlscript": "combinedmeterreadings-energex-poa.sql"
     },
 	{
+        "id": "combinedmeterreadings-yvw-postcodes",
+        "name": "YVW aggregated water consumption postcodes",
+        "etlgenerate": "YVW/yvw-vicnames_postcodes-etl.py",
+        "etlscript": "combinedmeterreadings-yvw-postcode.sql"
+    },
+	{
         "id": "combinedmeterreadings-yvw-poa",
         "name": "YVW aggregated water consumption poa",
         "etlgenerate": "YVW/yvw-poa-etl.py",
