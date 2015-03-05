@@ -107,12 +107,12 @@
         "name": "Jemena electricity consumption",
         "etlgenerate": "Jemena/JemenaDataProcessor.py",
         "etlscript": "combinedmeterreadings-jemena-poa.sql"
-    }
+    },
     {
         "id": "combinedmeterreadings-sewpoa",
         "name": "SEW aggregated water consumption poa",
         "etlgenerate": "SEW/postcode-based-data/SEW_POA_etl.py",
-        "etlscript": "combinedmeterreadings-sew-poa.sql"
+        "etlscript": "combinedmeterreadings-sew-postcode.sql"
     }
     ]
 }
