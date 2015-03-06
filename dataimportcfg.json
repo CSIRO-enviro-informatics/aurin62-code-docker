@@ -102,17 +102,17 @@
         "etlgenerate": "YVW/yvw-sample1-etl.py",
         "etlscript": "combinedmeterreadings-yvw-sample1.sql"
     },
+	{
+        "id": "combinedmeterreadings-sew-poa",
+        "name": "SEW aggregated water consumption poa",
+        "etlgenerate": "SEW/postcode-based-data/SEW_POA_etl.py",
+        "etlscript": "combinedmeterreadings-sew-postcode.sql"
+    },
     {
         "id": "combinedmeterreadings-jemena",
         "name": "Jemena electricity consumption",
         "etlgenerate": "Jemena/JemenaDataProcessor.py",
         "etlscript": "combinedmeterreadings-jemena-poa.sql"
-    },
-    {
-        "id": "combinedmeterreadings-sewpoa",
-        "name": "SEW aggregated water consumption poa",
-        "etlgenerate": "SEW/postcode-based-data/SEW_POA_etl.py",
-        "etlscript": "combinedmeterreadings-sew-postcode.sql"
     }
     ]
 }
