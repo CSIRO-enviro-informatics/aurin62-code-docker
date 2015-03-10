@@ -1,5 +1,5 @@
 esaa	combinedmeterreadings-esaa	8110
-nwc	watersupply-nwc	8120
+nwc watersupply-nwc	8120
 abselectricitycons	combinedmeterreadings-nongenmeters-abs	8130
 abselectricityconsnet	combinedmeterreadings-netmeters-abs	8131
 ausgrid	combinedmeterreadings-ausgrid	8140
@@ -13,3 +13,5 @@ yvwlocality	combinedmeterreadings-yvw-locality	8183
 sydneywater	combinedmeterreadings-sydneywater-lga	8190
 energex	combinedmeterreadings-energex-poa	8191
 jemena	combinedmeterreadings-jemena	8192
+quupostcode	combinedmeterreadings-quu-pc	8193
+quulocality	combinedmeterreadings-quu-lo	8194
