@@ -96,7 +96,7 @@
         "etlgenerate": "YVW/yvw-sample2-etl.py",
         "etlscript": "combinedmeterreadings-yvw-sample2.sql"
     },
-	{
+    {
         "id": "combinedmeterreadings-yvw-individual",
         "name": "YVW individual site water consumption",
         "etlgenerate": "YVW/yvw-sample1-etl.py",
@@ -107,6 +107,18 @@
         "name": "SEW aggregated water consumption poa",
         "etlgenerate": "SEW/postcode-based-data/SEW_POA_etl.py",
         "etlscript": "combinedmeterreadings-sew-postcode.sql"
+    },
+    {
+        "id": "combinedmeterreadings-quu-pc",
+        "name": "QUU postcode water consumption",
+        "etlgenerate": "QUU/quuetl.py",
+        "etlscript": "combinedmeterreadings-quu-postcode.sql"
+    },
+    {
+        "id": "combinedmeterreadings-quu-lo",
+        "name": "QUU postcode water consumption",
+        "etlgenerate": "QUU/quuetl.py",
+        "etlscript": "combinedmeterreadings-quu-locality.sql"
     },
     {
         "id": "combinedmeterreadings-jemena",

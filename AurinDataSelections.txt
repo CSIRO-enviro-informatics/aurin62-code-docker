@@ -13,4 +13,4 @@ yvwlocality	combinedmeterreadings-yvw-locality	8183
 sydneywater	combinedmeterreadings-sydneywater-lga	8190
 energex	combinedmeterreadings-energex-poa	8191
 jemena	combinedmeterreadings-jemena	8192
-sewpostcode	combinedmeterreadings-sew-postcode	8210
+sewpoa    combinedmeterreadings-sew-postcode    8210
