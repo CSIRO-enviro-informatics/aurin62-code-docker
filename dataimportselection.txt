@@ -1,2 +1,1 @@
-combinedmeterreadings-quu-pc
-combinedmeterreadings-quu-lo
+combinedmeterreadings-cww-pc
