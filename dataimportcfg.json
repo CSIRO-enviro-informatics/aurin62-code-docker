@@ -104,8 +104,8 @@
     },
     	{
         "id": "combinedmeterreadings-sew-postcode",
-        "name": "SEW aggregated water consumption poa",
-        "etlgenerate": "SEW/postcode-based-data/SEW_POA_etl.py",
+        "name": "SEW aggregated water consumption postcode",
+        "etlgenerate": "SEW/postcode-based-data/SEW_Postcode_etl.py",
         "etlscript": "combinedmeterreadings-sew-postcode.sql"
     },
     {
