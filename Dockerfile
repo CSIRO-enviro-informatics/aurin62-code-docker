@@ -17,7 +17,7 @@ RUN cd /aurin62-code-resources && git checkout it.csiro.au && git pull
 #Install apache with ssl (from https://registry.hub.docker.com/u/eboraas/apache/dockerfile) and proxy_ajp
 #need to remove this file since apt-get update returns error due to 404
 RUN rm -f /etc/apt/sources.list.d/pitti-postgresql-trusty.list
-RUN apt-get update && apt-get -y install apache2 apache2-utils && apt-get clean 
+RUN apt-get update && apt-get -y install apache2 apache2-utils && apt-get clean  
 ENV APACHE_PASSWORD aurin 
 ENV APACHE_USER aurin 
 RUN /usr/bin/htpasswd -bc /etc/apache2/htpasswd ${APACHE_USER} ${APACHE_PASSWORD}
@@ -42,7 +42,7 @@ RUN /bin/ln -sf /aurin62-code-resources/docker/server.xml /opt/tomcat7/conf/serv
 
 #Setup Python 
 RUN locale-gen en_AU.utf8
-RUN apt-get install -y python python-pip
+RUN apt-get install -y python python-pip python-dev
 RUN pip install xlrd pint petl pandas
 
 
