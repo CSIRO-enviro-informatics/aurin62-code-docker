@@ -13,10 +13,10 @@
         "etlscript": "combinedmeterreadings-sydneywater-lga.sql"
     },
     {
-        "id": "combinedmeterreadings-energex-poa",
+        "id": "combinedmeterreadings-energex-postcode",
         "name": "Energex electricty consumption",
-            "etlgenerate": "Energex/energex_poa_etl.py",
-            "etlscript": "combinedmeterreadings-energex-poa.sql"
+            "etlgenerate": "Energex/energex_postcode_etl.py",
+            "etlscript": "combinedmeterreadings-energex-postcode.sql"
     },
 	{
         "id": "combinedmeterreadings-yvw-postcodes",
