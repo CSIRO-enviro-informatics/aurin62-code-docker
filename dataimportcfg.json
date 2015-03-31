@@ -127,6 +127,12 @@
         "etlscript": "combinedmeterreadings-cww-postcode.sql"
     },
     {
+        "id": "combinedmeterreadings-mackay-pc",
+        "name": "Mackay Reg. Council postcode water consumption",
+        "etlgenerate": "Mackay Regional Council/mackay_postcode_etl.py",
+        "etlscript": "combinedmeterreadings-mackay-postcode.sql"
+    },
+    {
         "id": "combinedmeterreadings-jemena",
         "name": "Jemena electricity consumption",
         "etlgenerate": "Jemena/JemenaDataProcessor.py",
