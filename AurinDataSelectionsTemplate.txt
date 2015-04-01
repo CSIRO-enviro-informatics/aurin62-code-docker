@@ -1,5 +1,5 @@
 esaa	combinedmeterreadings-esaa	8110
-nwc watersupply-nwc	8120
+nwc	watersupply-nwc	8120
 abselectricitycons	combinedmeterreadings-nongenmeters-abs	8130
 abselectricityconsnet	combinedmeterreadings-netmeters-abs	8131
 ausgrid	combinedmeterreadings-ausgrid	8140
@@ -8,7 +8,7 @@ actewagl	combinedmeterreadings-suburb-actewagl	8160
 chw	combinedmeterreadings-ballarat-chw	8170
 yvwaggre	combinedmeterreadings-yvw-aggregated	8180
 yvwindiv	combinedmeterreadings-yvw-individual	8181
-yvwpoa	combinedmeterreadings-yvw-poa	8182
+yvwpostcode	combinedmeterreadings-yvw-postcodes	8182
 yvwlocality	combinedmeterreadings-yvw-locality	8183
 sydneywater	combinedmeterreadings-sydneywater-lga	8190
 energex	combinedmeterreadings-energex-poa	8191

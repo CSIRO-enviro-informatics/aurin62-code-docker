@@ -9,11 +9,15 @@ ADD known_hosts /root/.ssh/known_hosts
 RUN chmod 700 /root/.ssh/*
 #Clone this repository for internals 
 #RUN git clone ssh://git@stash.csiro.au:7999/a62/aurin62.git
-RUN git clone ssh://git@stash.csiro.au:7999/a62/aurin62-code-resources.git
 RUN git clone ssh://git@stash.csiro.au:7999/a62/aurin62-data.git
+RUN git clone ssh://git@stash.csiro.au:7999/a62/aurin62-code-resources.git
+RUN cd /aurin62-data && git pull
+RUN cd /aurin62-code-resources && git checkout it.csiro.au && git pull
 
 #Install apache with ssl (from https://registry.hub.docker.com/u/eboraas/apache/dockerfile) and proxy_ajp
-RUN apt-get update && apt-get -y install apache2 apache2-utils && apt-get clean 
+#need to remove this file since apt-get update returns error due to 404
+RUN rm -f /etc/apt/sources.list.d/pitti-postgresql-trusty.list
+RUN apt-get update && apt-get -y install apache2 apache2-utils && apt-get clean  
 ENV APACHE_PASSWORD aurin 
 ENV APACHE_USER aurin 
 RUN /usr/bin/htpasswd -bc /etc/apache2/htpasswd ${APACHE_USER} ${APACHE_PASSWORD}
@@ -38,8 +42,8 @@ RUN /bin/ln -sf /aurin62-code-resources/docker/server.xml /opt/tomcat7/conf/serv
 
 #Setup Python 
 RUN locale-gen en_AU.utf8
-RUN apt-get install -y python python-pip
-RUN pip install xlrd pint petl
+RUN apt-get install -y python python-pip python-dev
+RUN pip install xlrd pint petl pandas
 
 
 #Set geoserver postgres password
@@ -65,7 +69,6 @@ RUN rm -rf /opt/geoserver_data && rm -rf /opt/tomcat7/webapps/geoserver/data && 
 ADD dataimportcfg.json /aurin62-code-resources/dataimportcfg.json
 ADD dataimportselection.txt /aurin62-code-resources/dataimportselection.txt
 RUN /etc/init.d/postgresql start && /usr/bin/python /aurin62-code-resources/selectedbatchimport.py /aurin62-data /aurin62-code-resources/dataimportcfg.json /aurin62-code-resources/dataimportselection.txt 
-
 
 
 ENV GEOSERVER_DATA_DIR  /opt/geoserver_data
