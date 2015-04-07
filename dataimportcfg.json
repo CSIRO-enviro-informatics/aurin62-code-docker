@@ -43,10 +43,10 @@
             "etlscript": "combinedmeterreadings-ausgrid.sql"
     },
     {
-        "id": "combinedmeterreadings-nongenmeters-abs",
-        "name": "ABS non generating consumption",
-            "etlgenerate": "ABS/abs-nongenmeters-etl.py",
-            "etlscript": "combinedmeterreadings-nongenmeters-abs.sql"
+        "id": "combinedmeterreadings-abs",
+        "name": "ABS consumption",
+            "etlgenerate": "ABS/abs-energy-consumption.py",
+            "etlscript": "combinedmeterreadings-abs.sql"
     },
     {
         "id": "electricitysupply-abs",

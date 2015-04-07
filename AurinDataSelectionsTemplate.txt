@@ -1,7 +1,6 @@
-esaa	combinedmeterreadings-esaa	8110
+saa	combinedmeterreadings-esaa	8110
 nwc	watersupply-nwc	8120
-abselectricitycons	combinedmeterreadings-nongenmeters-abs	8130
-abselectricityconsnet	combinedmeterreadings-netmeters-abs	8131
+abselectricitycons	combinedmeterreadings-abs	8130
 ausgrid	combinedmeterreadings-ausgrid	8140
 actewwater	combinedmeterreadings-actewwater watersupply-actewwater	8150
 actewagl	combinedmeterreadings-suburb-actewagl	8160
