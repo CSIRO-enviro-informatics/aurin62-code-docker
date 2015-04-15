@@ -13,10 +13,10 @@
         "etlscript": "combinedmeterreadings-sydneywater-lga.sql"
     },
     {
-        "id": "combinedmeterreadings-energex-poa",
+        "id": "combinedmeterreadings-energex-postcode",
         "name": "Energex electricty consumption",
-            "etlgenerate": "Energex/energex_poa_etl.py",
-            "etlscript": "combinedmeterreadings-energex-poa.sql"
+            "etlgenerate": "Energex/energex_postcode_etl.py",
+            "etlscript": "combinedmeterreadings-energex-postcode.sql"
     },
 	{
         "id": "combinedmeterreadings-yvw-postcodes",
@@ -43,10 +43,10 @@
             "etlscript": "combinedmeterreadings-ausgrid.sql"
     },
     {
-        "id": "combinedmeterreadings-nongenmeters-abs",
-        "name": "ABS non generating consumption",
-            "etlgenerate": "ABS/abs-nongenmeters-etl.py",
-            "etlscript": "combinedmeterreadings-nongenmeters-abs.sql"
+        "id": "combinedmeterreadings-abs",
+        "name": "ABS consumption",
+            "etlgenerate": "ABS/abs-energy-consumption.py",
+            "etlscript": "combinedmeterreadings-abs.sql"
     },
     {
         "id": "electricitysupply-abs",
@@ -131,6 +131,12 @@
         "name": "SEQ postcode water consumption",
         "etlgenerate": "SEQWater/SEQWater.py",
         "etlscript": "combinedmeterreadings-seq-postcode.sql"
+    },
+    {
+        "id": "combinedmeterreadings-mackay-pc",
+        "name": "Mackay Reg. Council postcode water consumption",
+        "etlgenerate": "Mackay Regional Council/mackay_postcode_etl.py",
+        "etlscript": "combinedmeterreadings-mackay-postcode.sql"
     },
     {
         "id": "combinedmeterreadings-jemena",
