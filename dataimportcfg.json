@@ -127,6 +127,12 @@
         "etlscript": "combinedmeterreadings-cww-postcode.sql"
     },
     {
+        "id": "combinedmeterreadings-seq-pc",
+        "name": "SEQ postcode water consumption",
+        "etlgenerate": "SEQWater/SEQWater.py",
+        "etlscript": "combinedmeterreadings-seq-postcode.sql"
+    },
+    {
         "id": "combinedmeterreadings-jemena",
         "name": "Jemena electricity consumption",
         "etlgenerate": "Jemena/JemenaDataProcessor.py",

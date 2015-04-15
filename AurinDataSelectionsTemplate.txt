@@ -17,3 +17,4 @@ sewpostcode	combinedmeterreadings-sew-postcode	8210
 quupostcode	combinedmeterreadings-quu-pc	8193
 quulocality	combinedmeterreadings-quu-lo	8194
 cwwpostcode	combinedmeterreadings-cww-pc	8195
+seqpostcode	combinedmeterreadings-seq-pc	8196

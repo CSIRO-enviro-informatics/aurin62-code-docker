@@ -1,1 +1,1 @@
-cwwpostcode	combinedmeterreadings-cww-pc	8195
+seqpostcode	combinedmeterreadings-seq-pc	8196
