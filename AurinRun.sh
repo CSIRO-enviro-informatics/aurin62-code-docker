@@ -19,8 +19,8 @@ do
    #run docker build and docker run
    echo docker build -t aurinwesc:${NAME} .
    docker build -t aurinwesc:${NAME} --no-cache .
-   echo docker run -d -p ${PORT}:443 -P aurinwesc:${NAME}
-   docker run -d -p ${PORT}:443 -P aurinwesc:${NAME}
+   echo docker run -d -p ${PORT}:443 aurinwesc:${NAME}
+   docker run -d -p ${PORT}:443 aurinwesc:${NAME}
    echo
 done < $CONFIG
 IFS=$OLDIFS
