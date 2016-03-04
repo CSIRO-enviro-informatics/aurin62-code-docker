@@ -1,5 +1,6 @@
 # https://github.com/CSIRO-enviro-informatics/docker-geoserver
 FROM csiro_env/geoserver 
+RUN apt-get -y install ssh 
 
 # Add local credentials for git 
 ADD id_rsa /root/.ssh/id_rsa
@@ -11,6 +12,7 @@ RUN chmod 700 /root/.ssh/*
 #RUN git clone ssh://git@stash.csiro.au:7999/a62/aurin62.git
 RUN git clone ssh://git@stash.csiro.au:7999/a62/aurin62-data.git
 RUN git clone ssh://git@stash.csiro.au:7999/a62/aurin62-code-resources.git
+COPY ./wildcard.it.csiro.au.* /aurin62-code-resources/ssl/
 RUN cd /aurin62-data && git pull
 RUN cd /aurin62-code-resources && git checkout it.csiro.au && git pull
 
