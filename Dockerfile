@@ -12,7 +12,7 @@ RUN chmod 700 /root/.ssh/*
 #RUN git clone ssh://git@stash.csiro.au:7999/a62/aurin62.git
 RUN git clone ssh://git@stash.csiro.au:7999/a62/aurin62-data.git
 RUN git clone ssh://git@stash.csiro.au:7999/a62/aurin62-code-resources.git
-COPY ./wildcard.it.csiro.au.* /aurin62-code-resources/ssl/
+#COPY ./wildcard.it.csiro.au.* /aurin62-code-resources/ssl/
 RUN cd /aurin62-data && git pull
 RUN cd /aurin62-code-resources && git checkout it.csiro.au && git pull
 
@@ -53,14 +53,16 @@ ENV PGPASSWORD geoserver
 
 # create postgres user and database
 USER postgres
-RUN /etc/init.d/postgresql start &&\
-    psql --command "CREATE USER \"geoserver-admin\" WITH SUPERUSER PASSWORD 'geoserver';" && createdb -O geoserver-admin geoserver && psql geoserver -c "CREATE EXTENSION postgis;CREATE EXTENSION postgis_topology;" && /etc/init.d/postgresql stop
+ADD wait-for-it.sh /wait-for-it.sh
+RUN /etc/init.d/postgresql start && ./wait-for-it.sh postgres:5432 -- echo "postgres is up"\
+     && psql --command "CREATE USER \"geoserver-admin\" WITH SUPERUSER PASSWORD 'geoserver';" \
+     && createdb -O geoserver-admin geoserver && psql geoserver -c "CREATE EXTENSION postgis;CREATE EXTENSION postgis_topology;" && /etc/init.d/postgresql stop
 USER root 
 
 # create wesc database structure
 USER postgres 
-RUN /etc/init.d/postgresql start &&\
-    psql -h localhost -d geoserver -U geoserver-admin -w -f /aurin62-code-resources/WESCDDL.sql && /etc/init.d/postgresql stop
+RUN /etc/init.d/postgresql start && ./wait-for-it.sh postgres:5432 -- echo "postgres is up" \
+    && psql -h localhost -d geoserver -U geoserver-admin -w -f /aurin62-code-resources/WESCDDL.sql && /etc/init.d/postgresql stop
 USER root 
 
 # configure geoserver 
@@ -70,7 +72,8 @@ RUN rm -rf /opt/geoserver_data && rm -rf /opt/tomcat7/webapps/geoserver/data && 
 # import selected AURIN 6/2 data 
 ADD dataimportcfg.json /aurin62-code-resources/dataimportcfg.json
 ADD dataimportselection.txt /aurin62-code-resources/dataimportselection.txt
-RUN /etc/init.d/postgresql start && /usr/bin/python /aurin62-code-resources/selectedbatchimport.py /aurin62-data /aurin62-code-resources/dataimportcfg.json /aurin62-code-resources/dataimportselection.txt 
+RUN /etc/init.d/postgresql start  && ./wait-for-it.sh postgres:5432 -- echo "postgres is up" \
+   && /usr/bin/python /aurin62-code-resources/selectedbatchimport.py /aurin62-data /aurin62-code-resources/dataimportcfg.json /aurin62-code-resources/dataimportselection.txt 
 
 
 ENV GEOSERVER_DATA_DIR  /opt/geoserver_data
