@@ -4,6 +4,9 @@ This repository contains the deployment scripts for deploying WESC datasets for 
 AURIN6/2 project. The deployment uses docker-geoserver (https://github.com/CSIRO-enviro-informatics/docker-geoserver) to publish services out as a Apache/Geoserver/PostGIS stack with harmonised 
 content using the WESCML information model (see http://csiro-enviro-informatics.github.io/wescml).
 
+Attribution Statement: Yu, Jonathan; Leighton, Ben; Mirza, Fareed; Singh, Ramneek (2020): AURIN Lens 6/2 Project Deployment Code. v1. CSIRO. Software Collection. https://doi.org/10.25919/xskv-ej23 
+
+
 ## Pre-requisites
 
 * aurin62 data in /aurin62-data
