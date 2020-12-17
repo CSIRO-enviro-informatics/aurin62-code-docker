@@ -1,11 +1,14 @@
 # AURIN62 Deployment scripts
 
-Pre-requisite:
-* csiro_env/geoserver - clone and build from  https://github.com/CSIRO-enviro-informatics/docker-geoserver/
+This repository contains the deployment scripts for deploying WESC datasets for the 
+AURIN6/2 project. The deployment uses docker-geoserver (https://github.com/CSIRO-enviro-informatics/docker-geoserver) to publish services out as a Apache/Geoserver/PostGIS stack with harmonised 
+content using the WESCML information model (see http://csiro-enviro-informatics.github.io/wescml).
+
+## Pre-requisites
+
 * aurin62 data in /aurin62-data
 
 The rest gets pulled in from Github and docker hub
-
 
 
 ## Create AURIN62 containers via script
