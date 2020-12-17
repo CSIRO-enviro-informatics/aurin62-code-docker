@@ -1,20 +1,11 @@
 # https://github.com/CSIRO-enviro-informatics/docker-geoserver
-FROM csiro_env/geoserver 
+FROM csiroenvinf/geoserver:latest
 RUN apt-get -y install ssh 
 
-# Add local credentials for git 
-ADD id_rsa /root/.ssh/id_rsa
-ADD id_rsa.pub /root/.ssh/id_rsa.pub
-ADD known_hosts /root/.ssh/known_hosts
-
-RUN chmod 700 /root/.ssh/*
 #Clone this repository for internals 
-#RUN git clone ssh://git@stash.csiro.au:7999/a62/aurin62.git
-RUN git clone ssh://git@stash.csiro.au:7999/a62/aurin62-data.git
-RUN git clone ssh://git@stash.csiro.au:7999/a62/aurin62-code-resources.git
-#COPY ./wildcard.it.csiro.au.* /aurin62-code-resources/ssl/
-RUN cd /aurin62-data && git pull
-RUN cd /aurin62-code-resources && git checkout it.csiro.au && git pull
+RUN git clone https://github.com/CSIRO-enviro-informatics/aurin62-code-resources.git
+ADD aurin62-data /aurin62-data
+RUN cd /aurin62-code-resources && git pull
 
 #Install apache with ssl (from https://registry.hub.docker.com/u/eboraas/apache/dockerfile) and proxy_ajp
 #need to remove this file since apt-get update returns error due to 404
@@ -44,8 +35,8 @@ RUN /bin/ln -sf /aurin62-code-resources/docker/server.xml /opt/tomcat7/conf/serv
 
 #Setup Python 
 RUN locale-gen en_AU.utf8
-RUN apt-get install -y python python-pip python-dev
-RUN pip install xlrd pint petl pandas
+RUN apt-get install -y python python-pip python-dev python-pandas
+RUN pip install xlrd pint petl 
 
 
 #Set geoserver postgres password
