@@ -25,6 +25,16 @@ $ ./AurinRun.sh
 
 Note, Dockerfile configures the deployment and which datasets get used, etl, geoserver, etc.
 
+Once deployed, you'll find the geoserver endpoints at:
+https://<server name>:<mapped port>/geoserver
+
+e.g. https://localhost:8180/geoserver/
+
+Note: HTTPS and the default username/password of aurin/aurin (please change these during actual deployment)
+
+You should be able to query via WFS depending on the feature type (wescml-sf0:CombinedMeterReadings, wescml-sf0:WaterSupply or wescml-sf0:ElectricitySupply). This corresponds to the data model published at https://csiro-enviro-informatics.github.io/wescml. An example query is:
+
+https://localhost:8180/geoserver/wescml-sf0/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=wescml-sf0:CombinedMeterReadings&maxFeatures=50
 
 
 ## Manually create each aurin container (deprecated)
